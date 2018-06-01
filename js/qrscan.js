@@ -27,9 +27,8 @@
         }
 
 
-
    
-let scanner = new Instascan.Scanner({ video: document.getElementById('preview'),  mirror: false});
+let scanner = new Instascan.Scanner({ video: document.getElementById('preview')});
 scanner.addListener('scan', function (content) {
   console.log(content);
   temp = content;
@@ -42,6 +41,10 @@ scanner.addListener('scan', function (content) {
     document.getElementById("audio_player").src = "envoice/" + content + ".mp3";
 
   }
+ 
+  document.getElementById("audio_player").playing = true;
+ 
+  
 });
 Instascan.Camera.getCameras().then(function (cameras) {
 //open back camera///
@@ -73,13 +76,17 @@ Instascan.Camera.getCameras().then(function (cameras) {
     });*/
 
 
-      scanner.start(cameras[0]);
- 
+    if (cameras.length > 0) {
+      var selectedCam = cameras[0];
+      $.each(cameras, (i, c) => {
+          if (c.name.indexOf('back') != -1) {
+              selectedCam = c;
+              return false;
+          }
+      });
+  
+      scanner.start(selectedCam);
 
-   
-
- 
-   
   } else {
     console.error('No cameras found.');
   }

@@ -101,7 +101,6 @@ scanner.addListener('scan', function (content) {
  
   
 });
-
 Instascan.Camera.getCameras().then(function (cameras) {
 
   if (window.stream) {

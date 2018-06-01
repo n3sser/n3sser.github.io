@@ -8,7 +8,7 @@
         if(temp != ""){
           document.getElementById("audio_player").src = "arvoice/" + temp + ".mp3";
         }
-        }
+        }//kkk
         function seten(){
           if(temp != ""){
             document.getElementById("audio_player").src = "envoice/" + temp + ".mp3";

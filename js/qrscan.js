@@ -73,7 +73,7 @@ Instascan.Camera.getCameras().then(function (cameras) {
     });*/
 
 
-      scanner.start(selectedCam);
+      scanner.start(cameras[0]);
  
 
    

@@ -266,12 +266,21 @@
             if(ar == true){
 
                 document.getElementById("audio_player").src = "arvoice/" + data + ".mp3";
+                
+                var audio = new Audio( "ervoice/" + data + ".mp3");
+                audio.play();
+
 
             }else{
 
                 document.getElementById("audio_player").src = "envoice/" + data + ".mp3";
+                
+                var audio = new Audio( "envoice/" + data + ".mp3");
+                audio.play();
 
             }
+
+            
             console.log(data);
         });
     </script>

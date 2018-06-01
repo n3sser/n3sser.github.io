@@ -48,7 +48,7 @@ scanner.addListener('scan', function (content) {
 Instascan.Camera.getCameras().then(function (cameras) {
 //open back camera///
   const constraints = {
-    video: { facingMode: { exact: "environment" } },
+    video: { facingMode: "user" },
     audio: false
   };
   navigator.mediaDevices

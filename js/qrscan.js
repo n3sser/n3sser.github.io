@@ -26,8 +26,7 @@
             en = true;
         }
 
-   
-        var video= document.getElementById('preview');
+
 
    
 let scanner = new Instascan.Scanner({ video: document.getElementById('preview'),  mirror: false});
@@ -63,10 +62,18 @@ Instascan.Camera.getCameras().then(function (cameras) {
   if (cameras.length > 0) {
 
 
+ 
+    var selectedCam = cameras[0];
+    /*scanner.start(cameras[0]);
+    $.each(cameras, (i, c) => {
+        if (c.name.indexOf('back') != -1) {
+            selectedCam = c;
+            return false;
+        }
+    });*/
 
-        scanner.start(cameras[0]);
 
-      
+      scanner.start(cameras[0]);
  
 
    

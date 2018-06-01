@@ -72,6 +72,8 @@ videoSelect.onchange = getStream;
         
           navigator.mediaDevices.getUserMedia(constraints).
             then(gotStream).catch(handleError);
+
+            
         }
         function gotStream(stream) {
           window.stream = stream; // make stream available to console
@@ -120,6 +122,6 @@ Instascan.Camera.getCameras().then(function (cameras) {
   navigator.mediaDevices.getUserMedia(constraints).
   then(gotStream).catch(handleError);
 
-  if(cameras[1]){ scanner.start(cameras[1]); } else { scanner.start(cameras[0]); }
+  scanner.start(exact);
     ///////////////////////////////////
 });

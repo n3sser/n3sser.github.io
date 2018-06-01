@@ -75,13 +75,10 @@
                           <input type="radio" name="optradio" onclick="seten()">English
                         </label>
 
-                        <div class="select">
-                            <label for="audioSource">Audio source: </label><select id="audioSource"></select>
+                        <div class="frm-grp txt-cntr">
+                            <label class="disp-blck">Choose camera:</label>
+                            <select id="webcameraChanger" onchange="cameraChange($(this).val());" class="frm-ctrl mar-btm-2"></select>
                         </div>
-                        
-                          <div class="select">
-                            <label for="videoSource">Video source: </label><select id="videoSource"></select>
-                          </div>
                         <!--
                         <label class="radio-inline" style="color: white">
                             <input type="submit"  value="Switch Camera" id="flip-button" style="color: black">
@@ -93,7 +90,7 @@
                     <br><br><br><br>
                       
                     
-                    <video id="preview"></video>
+                    <video id="webcameraPreview"></video>
                 </div>  <!-- end home-content__text -->
 
                 <div class="col-eight home-content__counter">
@@ -213,7 +210,68 @@
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
     <script src="js/instascan.min.js"></script>
-    <script src="js/qrscan.js"></script>
+    <!--<script src="js/qrscan.js"></script>-->
+    <script type="text/javascript" src="https://rawgit.com/RusBit/QrCodeHtmlScanner/master/src/QrCodeScanner.js"></script>
+
+    <script type="text/javascript">
+
+    var ar = true;
+        var en = false;
+        var temp="";
+
+        function setar(){
+
+
+
+            ar = true;
+            en = false;
+
+            
+        if(temp != ""){
+          document.getElementById("audio_player").src = "arvoice/" + temp + ".mp3";
+        }
+
+        }
+
+        function seten(){
+
+          if(temp != ""){
+            document.getElementById("audio_player").src = "envoice/" + temp + ".mp3";
+          }
+            ar = false;
+            en = true;
+        }
+
+        //HTML video component for web camera
+        var videoComponent = $("#webcameraPreview");
+        //HTML select component for cameras change
+        var webcameraChanger = $("#webcameraChanger");
+        var options = {};
+        //init options for scanner
+        options = initVideoObjectOptions("webcameraPreview");
+        var cameraId = 0;
+        initScanner(options);
+        initAvaliableCameras(
+            webcameraChanger,
+            function () {
+                cameraId = parseInt(getSelectedCamera(webcameraChanger));
+            }
+        );
+        initCamera(cameraId);
+        scanStart(function (data){
+            temp = data;
+            if(ar == true){
+
+                document.getElementById("audio_player").src = "arvoice/" + data + ".mp3";
+
+            }else{
+
+                document.getElementById("audio_player").src = "envoice/" + data + ".mp3";
+
+            }
+            console.log(data);
+        });
+    </script>
 
 
 

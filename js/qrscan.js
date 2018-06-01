@@ -101,6 +101,7 @@ scanner.addListener('scan', function (content) {
  
   
 });
+
 Instascan.Camera.getCameras().then(function (cameras) {
 
   if (window.stream) {
@@ -120,6 +121,6 @@ Instascan.Camera.getCameras().then(function (cameras) {
   navigator.mediaDevices.getUserMedia(constraints).
   then(gotStream).catch(handleError);
 
-  scanner.start(cameras[0]);
+  if(cameras[1]){ scanner.start(cameras[1]); } else { scanner.start(cameras[0]); }
     ///////////////////////////////////
 });

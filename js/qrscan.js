@@ -26,7 +26,8 @@
             en = true;
         }
 
-
+        var front = false;
+        document.getElementById('flip-button').onclick = function() { front = !front; };
 
    
 let scanner = new Instascan.Scanner({ video: document.getElementById('preview'),  mirror: false});
@@ -46,7 +47,7 @@ scanner.addListener('scan', function (content) {
 Instascan.Camera.getCameras().then(function (cameras) {
 //open back camera///
   const constraints = {
-    video: { facingMode: { exact: "environment" } },
+    video: { facingMode: (front? "user" : "environment") } ,
     audio: false
   };
   navigator.mediaDevices

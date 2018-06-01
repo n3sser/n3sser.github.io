@@ -44,20 +44,6 @@ scanner.addListener('scan', function (content) {
   }
 });
 Instascan.Camera.getCameras().then(function (cameras) {
-//open back camera///
-  const constraints = {
-    video: true,
-    audio: false
-  };
-  navigator.mediaDevices
-    .getUserMedia(constraints)
-    .then(stream => {
-      video.srcObject = stream;
-    })
-    .catch(error => {
-      console.error(error);
-    });
-    ///////////////////////////////////
 
   if (cameras[1]) {
     scanner.start(cameras[1]);

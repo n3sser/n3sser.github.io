@@ -27,7 +27,8 @@
         }
 
         var front = false;
-        document.getElementById('flip-button').onclick = function() { front = !front; };
+        var video= document.getElementById('preview');
+        //document.getElementById('flip-button').onclick = function() { front = !front; };
 
    
 let scanner = new Instascan.Scanner({ video: document.getElementById('preview'),  mirror: false});

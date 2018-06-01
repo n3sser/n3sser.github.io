@@ -26,9 +26,8 @@
             en = true;
         }
 
-        var front = false;
+   
         var video= document.getElementById('preview');
-        //document.getElementById('flip-button').onclick = function() { front = !front; };
 
    
 let scanner = new Instascan.Scanner({ video: document.getElementById('preview'),  mirror: false});
@@ -48,7 +47,7 @@ scanner.addListener('scan', function (content) {
 Instascan.Camera.getCameras().then(function (cameras) {
 //open back camera///
   const constraints = {
-    video: { facingMode: "user" },
+    video: true,
     audio: false
   };
   navigator.mediaDevices
